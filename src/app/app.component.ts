@@ -25,6 +25,6 @@ export class AppComponent {
   checkLoggin()
   {
     let user = JSON.parse(this.sessionService.getSession('registerdUser'))
-    return user.is_logged_in 
+    return ( user?.is_logged_in) ? user?.is_logged_in :  false; 
   }
 }
