@@ -1,0 +1,16 @@
+<div class="container" style="width:600px">
+  <div>
+    <h4>{{ title }}</h4>
+    <div class="text-center" *ngIf="checkLoggin()">
+      <a href="javascript:void(0);" [routerLink]="['/dashboard']" class="default-btn add_btn_art">My Dashboard</a>
+      <a style="margin-left: 15px;" href="javascript:void(0);" [routerLink]="['/edit-profile']" class="default-btn add_btn_art">Edit Profile</a>   
+      <a style="margin-left: 15px;" href="javascript:void(0);" [routerLink]="['/add-file']" class="default-btn add_btn_art">Add File</a>
+      <a style="margin-left: 15px;" href="javascript:void(0);"(click)="logout()" class="default-btn add_btn_art">Logout</a>   
+   </div>
+  </div>
+
+  <div class="my-3">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

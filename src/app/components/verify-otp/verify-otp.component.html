@@ -1,0 +1,36 @@
+<div class="card m-3">
+    <h5 class="card-header">Verify otp send on registerd mobile number</h5>
+    <div class="card-body">
+      <form >
+        <div style="display: flex;">
+          <div class="form-group">
+            <label>Enter One Time Password</label>
+            <ngx-otp-input    #ngxotp [config]="otpInputConfig" (otpChange)="handeOtpChange($event)" [status]="'error'" (fill)="handleFillEvent($event)">
+            </ngx-otp-input>
+          </div>
+       
+          <button [disabled]="!resendOtp"  class="btn btn-primary" style="margin-left: 15px;
+          height: 40px;
+          margin-top: 28px;" (click)="resend()">Resend Otp</button>
+
+          <p *ngIf="displayTimer" style="
+          margin-top: 35px;
+          margin-left: 15px; ">{{ display }}</p>
+          </div>
+        <div *ngIf="submitted && !fillResult && otpChangeResult.length == 0 && !resendOtp" class="text-danger">
+          <div *ngIf="!fillResult">Otp number is required</div>
+        </div>
+        <div *ngIf="submitted && otpChangeResult.length > 0 &&  otpChangeResult.length < 6" class="text-danger">
+          <div *ngIf="otpChangeResult.length > 0 && otpChangeResult.length < 6">Pleas enter complete 6 digit otp</div>
+        </div>
+       
+        <div class="text-center">
+          <button class="btn btn-primary mr-1" type="submit" (click)="onSubmit()">Verify Otp</button>
+          <button class="btn btn-secondary" type="reset" (click)="clear()">
+            Clear Otp
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

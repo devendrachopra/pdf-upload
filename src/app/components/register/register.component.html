@@ -1,0 +1,31 @@
+<div class="card m-3">
+    <h5 class="card-header">Registration Form</h5>
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+     
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input
+            type="text"
+            placeholder="Enter mobile number"
+            formControlName="mobile"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+            maxlength="10"
+            (keypress)="numberOnly($event)"
+          />
+          <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+            <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+          </div>
+          <div *ngIf="(f.mobile.touched || submitted) && (f.mobile.errors?.minlength  || f.mobile?.errors?.maxlength)&& !f.mobile.errors?.required" class="text-danger validation-error">Mobile number should be 10 digits.</div>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary mr-1">Register</button>
+          <button class="btn btn-secondary" type="reset" (click)="onReset()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
